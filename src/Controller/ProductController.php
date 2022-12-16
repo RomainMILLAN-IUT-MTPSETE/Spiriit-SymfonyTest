@@ -15,7 +15,7 @@ class ProductController extends AbstractController{
     public function list(ManagerRegistry $doctrine, RequestStack $requestStack): Response{
         $entityManager = $doctrine->getManager();
 
-        $products = $entityManager->getRepository(Product::class)->findAll();
+        $products = $entityManager->getRepository(Product::class)->findBy(array(), array('name' => 'ASC'));
 
         return $this->render('products/list.html.twig', ['products' => $products, 'numberProductOnCart' => self::getNumberProductOnCart($requestStack)]);
     }
