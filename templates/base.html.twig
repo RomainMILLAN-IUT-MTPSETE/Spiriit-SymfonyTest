@@ -44,7 +44,15 @@
             {% endfor %}
         {% endfor %}
         {% block content %}
-            <p class="alert-warning">Bienvenue sur Spiriit-Test-Symfony (STS)</p>
+            <div>
+                <div class="mt-5 d-flex flex-column align-items-center h-auto">
+                    <img class="h-auto" src="{{ asset('img/spiriit-logo.svg') }}" alt="Logo spiriit">
+                    <h3 class="ms-3 h-auto fw-semibold">Test-Symfony</h3>
+                </div>
+
+                <p class="fs-4 text-center mt-5 w-25 m-auto">Un test fait par Romain MILLAN pour obtenir un stage dans l'entreprise <span class="fw-bolder">spiri<span class="text-primary">i</span>t</span></p>
+            </div>
+            
         {% endblock %}
     </main>
     <footer class="footer">

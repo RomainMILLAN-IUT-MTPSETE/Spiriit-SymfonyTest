@@ -10,9 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController{
 
     #[Route('/', name: 'homepage')]
-    public function homepage(): Response{
-        $urlProductList = $this->redirectToRoute('product_list');
-        return $urlProductList;
+    public function homepage(RequestStack $requestStack): Response{
+        return $this->render('base.html.twig', ['numberProductOnCart' => ProductController::getNumberProductOnCart($requestStack)]);
     }
 
     #[Route('/session/clear', name: 'session_clear')]
