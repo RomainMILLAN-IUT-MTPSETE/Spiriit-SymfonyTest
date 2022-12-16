@@ -27,7 +27,7 @@ class CartController extends AbstractController{
             }
         }
 
-        return $this->render('cart/cart.html.twig', ['products' => $productsList, 'priceTotal' => $priceTotal]);
+        return $this->render('cart/cart.html.twig', ['products' => $productsList, 'priceTotal' => $priceTotal, 'numberProductOnCart' => ProductController::getNumberProductOnCart($requestStack)]);
     }
 
     #[Route('/panier/add', name: 'cart_add')]
@@ -58,7 +58,7 @@ class CartController extends AbstractController{
 
         $this->addFlash('success', 'Produit ajouté à votre panier avec succèes');
 
-        return $this->render('base.html.twig');
+        return $this->render('base.html.twig', ['numberProductOnCart' => ProductController::getNumberProductOnCart($requestStack)]);
     }
 
 }
