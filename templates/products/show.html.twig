@@ -12,8 +12,9 @@
 
             <div class="h-auto mt-5 mb-0 pb-0 me-5 justify-content-end">
                 <p class="">{{ product.price }}€</p>
-                <form class="d-flex flex-column-reverse" action="#" method="post">
-                    <input type="number" name="nb_add" value="1" class="form-floating mb-3 mt-2">
+                <form class="d-flex flex-column-reverse" action="{{ path('cart_add') }}" method="post">
+                    <input type="number" name="nb_product" min="1" max="100" value="1" class="form-floating mb-3 mt-2">
+                    <input type="hidden" value="{{ product.id }}" name="id_product">
                     <input type="submit" value="Ajouter au panier" class="btn btn-primary">
                 </form>
             </div>
