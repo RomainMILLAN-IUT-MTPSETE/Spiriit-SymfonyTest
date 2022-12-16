@@ -2,5 +2,21 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    <div class="product-list--container">
+        <h3 class="mt-5 ms-3">Liste des produits ({{ products|length }}):</h3>
 
+        <div class="row m-lg-2 m-md-2">
+            {% for product in products %}
+                <div class="col-sm-4 mt-4">
+                    <div class="product-item card">
+                        <div class="card-body">
+                            <p class="card-title">{{ product.name }}</p>
+                            <p class="card-text">{{ product.description }}</p>
+                            <a href="#"><button class="btn btn-primary">Voir la fiche</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
