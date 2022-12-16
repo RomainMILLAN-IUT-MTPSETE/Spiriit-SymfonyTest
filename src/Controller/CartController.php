@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -11,14 +13,28 @@ use Symfony\Component\Routing\Annotation\Route;
 class CartController extends AbstractController{
 
     #[Route('/panier', name: 'cart_index')]
-    public function index(): Response{
-        return $this->render('base.html.twig');
+    public function index(ManagerRegistry $managerRegistry, RequestStack $requestStack): Response{
+        $productsSession = $requestStack->getSession()->get('products_cart');
+
+        $priceTotal = 0.0;
+        $productsList = [];
+        if($productsSession != null){
+            foreach($productsSession as $key => $value){
+                $productItem = $managerRegistry->getRepository(Product::class)->find($key);
+                $priceFinalItem = $value*$productItem->getPrice();
+                $priceTotal = $priceTotal + $priceFinalItem;
+                array_push($productsList, [$productItem->getName(), $productItem->getDescription(), $value, $priceFinalItem]);
+            }
+        }
+
+        return $this->render('cart/cart.html.twig', ['products' => $productsList, 'priceTotal' => $priceTotal]);
     }
 
     #[Route('/panier/add', name: 'cart_add')]
     public function addToCart(Request $request, RequestStack $requestStack): Response{
         $nb_product = $request->request->get('nb_product');
         $id_product = $request->request->get('id_product');
+        //var_dump($id_product);
 
         if($nb_product == null OR $id_product == null){
             $this->addFlash('danger', 'Aucun produit à ajouter');
@@ -26,24 +42,19 @@ class CartController extends AbstractController{
         }
 
         $session = $requestStack->getSession();
-        $session->clear();
         $products = $session->get('products_cart', []);
-
-        $find = false;
-        foreach ($products as $item){
-            if($item[0] == $id_product){
-                $find = true;
-            }
-        }
-
-        if($find){
-            $products[$id_product] = $products[$id_product] + $nb_product;
+        if(array_key_exists($id_product, $products)){
+            $newNbProduct = $products[$id_product] + $nb_product;
+            $newProductList = array($id_product => $newNbProduct);
+            $products = array_replace($products, $newProductList);
         }else {
-            array_push($products, [$id_product, $nb_product]);
+            $products[$id_product] = $nb_product;
         }
 
-
+        var_dump($products);
+        $session->remove('products_cart');
         $session->set('products_cart', $products);
+
 
         $this->addFlash('success', 'Produit ajouté à votre panier avec succèes');
 
