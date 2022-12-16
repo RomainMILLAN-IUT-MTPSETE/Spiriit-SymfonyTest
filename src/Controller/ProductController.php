@@ -20,4 +20,21 @@ class ProductController extends AbstractController{
         return $this->render('products/list.html.twig', ['products' => $products]);
     }
 
+    #[Route('/produits/{id}', name: 'product_show')]
+    public function show(ManagerRegistry $doctrine, int $id): Response{
+        if($id < 1){
+            return $this->redirectToRoute('product_list');
+        }
+
+        $entityManager = $doctrine->getManager();
+
+        $product = $entityManager->getRepository(Product::class)->find($id);
+
+        if(!$product){
+            throw $this->createNotFoundException('Produit avec l\'identifiant '.$id.' non trouvé');
+        }
+
+        return $this->render('products/show.html.twig', ['product' => $product]);
+    }
+
 }

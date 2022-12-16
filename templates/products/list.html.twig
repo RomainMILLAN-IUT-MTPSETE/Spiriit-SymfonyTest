@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <p class="card-title">{{ product.name }}</p>
                             <p class="card-text">{{ product.description }}</p>
-                            <a href="#"><button class="btn btn-primary">Voir la fiche</button></a>
+                            <a href="{{ path('product_show', {'id': product.id}) }}"><button class="btn btn-primary">Voir la fiche</button></a>
                         </div>
                     </div>
                 </div>
