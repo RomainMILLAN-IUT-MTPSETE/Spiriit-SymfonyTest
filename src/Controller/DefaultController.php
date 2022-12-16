@@ -10,7 +10,8 @@ class DefaultController extends AbstractController{
 
     #[Route('/', name: 'homepage')]
     public function homepage(): Response{
-        return $this->render('base.html.twig');
+        $urlProductList = $this->redirectToRoute('product_list');
+        return $urlProductList;
     }
 
 }
