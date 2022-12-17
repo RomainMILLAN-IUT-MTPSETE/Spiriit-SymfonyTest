@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController{
@@ -19,7 +20,7 @@ class CartController extends AbstractController{
         $productsSession = $requestStack->getSession()->get('products_cart');
 
         //Je retourne le rendue du fichier 'cart.html.twig' avec les variables en paramètres
-        return $this->render('cart/cart.html.twig', ['products' => $this->getListProductInCart($managerRegistry, $productsSession), 'priceTotal' => $this->getTotalPrice($managerRegistry, $productsSession), 'numberProductOnCart' => self::getNumberProductOnCart($requestStack)]);
+        return $this->render('cart/cart.html.twig', ['products' => $this->getListProductInCart($managerRegistry, $productsSession), 'priceTotal' => $this->getTotalPrice($managerRegistry, $productsSession), 'numberProductOnCart' => self::getNumberProductOnCart($requestStack->getSession())]);
     }
 
     //Route avec l'URL /panier/add et le nom cart_add
@@ -57,10 +58,7 @@ class CartController extends AbstractController{
 
     //Route avec l'URL /panier/clear avec le nom 'cart_clear'
     #[Route('/panier/clear', 'cart_clear')]
-    public function clearCart(RequestStack $requestStack){
-        //Recupération de la session
-        $session = $requestStack->getSession();
-
+    public function clearCart(Session $session){
         //Mis du tableau en session 'products_cart' sur un tableau vide
         $session->set("products_cart", []);
 
@@ -130,9 +128,9 @@ class CartController extends AbstractController{
     }
 
     //Fonction qui permet de calculer le nombre de produits dans la session
-    public static function getNumberProductOnCart(RequestStack $requestStack): int{
+    public static function getNumberProductOnCart(Session $session): int{
         //Recupération du tableau de produits stocké en session
-        $productsOnCart = $requestStack->getSession()->get('products_cart');
+        $productsOnCart = $session->get('products_cart');
 
         //Set la variable 'numberProductOnCart' qui désigne le nombre d'article dans la session à 0
         $numberProductOnCart = 0;

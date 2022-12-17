@@ -21,7 +21,7 @@ class ProductController extends AbstractController{
         $products = $entityManager->getRepository(Product::class)->findBy(array(), array('name' => 'ASC'));
 
         //Retourne le rendu de la page products/list.html.twig avec tous les paramètres
-        return $this->render('products/list.html.twig', ['products' => $products, 'numberProductOnCart' => CartController::getNumberProductOnCart($requestStack)]);
+        return $this->render('products/list.html.twig', ['products' => $products, 'numberProductOnCart' => CartController::getNumberProductOnCart($requestStack->getSession())]);
     }
 
     //Route avec l'URL /produits/ avec un identifiant de produit et le nom 'product_show'
@@ -46,7 +46,7 @@ class ProductController extends AbstractController{
         }
 
         //Retourne le rendu de la page products/show.html.twig avec les paramètres
-        return $this->render('products/show.html.twig', ['product' => $product, 'numberProductOnCart' => CartController::getNumberProductOnCart($requestStack)]);
+        return $this->render('products/show.html.twig', ['product' => $product, 'numberProductOnCart' => CartController::getNumberProductOnCart($requestStack->getSession())]);
     }
 
 }

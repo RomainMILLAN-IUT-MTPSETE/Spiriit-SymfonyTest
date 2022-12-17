@@ -13,7 +13,7 @@ class DefaultController extends AbstractController{
     #[Route('/', name: 'homepage')]
     public function homepage(RequestStack $requestStack): Response{
         //Retourne le dendu de la page base.html.twig avec les paramètres 'numberProductOnCart'
-        return $this->render('base.html.twig', ['numberProductOnCart' => CartController::getNumberProductOnCart($requestStack)]);
+        return $this->render('base.html.twig', ['numberProductOnCart' => CartController::getNumberProductOnCart($requestStack->getSession())]);
     }
 
 }
