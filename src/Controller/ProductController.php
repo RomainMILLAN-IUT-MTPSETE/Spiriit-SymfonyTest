@@ -21,7 +21,7 @@ class ProductController extends AbstractController{
         $products = $entityManager->getRepository(Product::class)->findBy(array(), array('name' => 'ASC'));
 
         //Retourne le rendu de la page products/list.html.twig avec tous les paramètres
-        return $this->render('products/list.html.twig', ['products' => $products, 'numberProductOnCart' => self::getNumberProductOnCart($requestStack)]);
+        return $this->render('products/list.html.twig', ['products' => $products, 'numberProductOnCart' => CartController::getNumberProductOnCart($requestStack)]);
     }
 
     //Route avec l'URL /produits/ avec un identifiant de produit et le nom 'product_show'
@@ -46,27 +46,7 @@ class ProductController extends AbstractController{
         }
 
         //Retourne le rendu de la page products/show.html.twig avec les paramètres
-        return $this->render('products/show.html.twig', ['product' => $product, 'numberProductOnCart' => self::getNumberProductOnCart($requestStack)]);
-    }
-
-
-    //Fonction qui permet de calculer le nombre de produits dans la session
-    public static function getNumberProductOnCart(RequestStack $requestStack): int{
-        //Recupération du tableau de produits stocké en session
-        $productsOnCart = $requestStack->getSession()->get('products_cart');
-        //Set la variable 'numberProductOnCart' qui désigne le nombre d'article dans la session à 0
-        $numberProductOnCart = 0;
-        //S'il y a des produits dans le tableau stocké en session
-        if($productsOnCart != null){
-            //Pour tous les éléments dans le tableau avec la clés $key et la valeur $value
-            foreach ($productsOnCart as $key => $value){
-                //Mise à jour de la variable 'numberProductOnCart' avec le nombre de produit actuel.
-                $numberProductOnCart = $numberProductOnCart + $value;
-            }
-        }
-
-        //Retourne le nombre de produit dans le panier
-        return $numberProductOnCart;
+        return $this->render('products/show.html.twig', ['product' => $product, 'numberProductOnCart' => CartController::getNumberProductOnCart($requestStack)]);
     }
 
 }
