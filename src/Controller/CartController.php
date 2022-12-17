@@ -83,4 +83,17 @@ class CartController extends AbstractController{
         return $this->redirectToRoute('cart_index');
     }
 
+    //Route avec l'URL /panier/clear avec le nom 'cart_clear'
+    #[Route('/panier/clear', 'cart_clear')]
+    public function clearCart(RequestStack $requestStack){
+        //Recupération de la session
+        $session = $requestStack->getSession();
+
+        //Mis du tableau en session 'products_cart' sur un tableau vide
+        $session->set("products_cart", []);
+
+        //Redirection vers la page de panier
+        return $this->redirectToRoute('cart_index');
+    }
+
 }

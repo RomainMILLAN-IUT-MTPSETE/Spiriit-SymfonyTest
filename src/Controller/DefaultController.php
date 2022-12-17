@@ -16,10 +16,4 @@ class DefaultController extends AbstractController{
         return $this->render('base.html.twig', ['numberProductOnCart' => ProductController::getNumberProductOnCart($requestStack)]);
     }
 
-    #[Route('/session/clear', name: 'session_clear')]
-    public function clearSession(RequestStack $requestStack): Response{
-        $requestStack->getSession()->clear();
-        return $this->redirectToRoute('homepage');
-    }
-
 }
