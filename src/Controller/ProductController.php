@@ -35,8 +35,6 @@ class ProductController extends AbstractController{
             //Récupération du premier identifiant produit
             $id = $entityManager->getRepository(Product::class)->findOneBy(array(), array('id' => 'ASC'))->getId();
 
-            //Redirection vers la bonne page
-            return $this->redirectToRoute('product_show', ['id' => $id]);
         }
 
         //Récupération du produit avec l'identifiant $id

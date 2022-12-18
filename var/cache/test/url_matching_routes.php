@@ -21,7 +21,7 @@ return [
     ],
     [ // $dynamicRoutes
         31 => [
-            [['_route' => 'product_show', 'id' => '13', '_controller' => 'App\\Controller\\ProductController::show'], ['id'], null, null, false, true, null],
+            [['_route' => 'product_show', 'id' => '0', '_controller' => 'App\\Controller\\ProductController::show'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
