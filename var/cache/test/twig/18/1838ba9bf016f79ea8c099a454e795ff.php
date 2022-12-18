@@ -95,9 +95,9 @@ class __TwigTemplate_ff5bf83352eeceb1ffaa424520cb72c7 extends Template
                     <a href=\"";
         // line 36
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_index");
-        echo "\"><button class=\"btn btn-primary\">Panier (";
+        echo "\"><button class=\"btn btn-primary\"><p id=\"cartButtonNumberProduct\">Panier (";
         echo twig_escape_filter($this->env, (isset($context["numberProductOnCart"]) || array_key_exists("numberProductOnCart", $context) ? $context["numberProductOnCart"] : (function () { throw new RuntimeError('Variable "numberProductOnCart" does not exist.', 36, $this->source); })()), "html", null, true);
-        echo ")</button></a>
+        echo ")</p></button></a>
                 </li>
             </ul>
         </nav>
@@ -236,7 +236,7 @@ class __TwigTemplate_ff5bf83352eeceb1ffaa424520cb72c7 extends Template
                     <h3 class=\"ms-3 h-auto fw-semibold\">Test-Symfony</h3>
                 </div>
 
-                <p class=\"fs-4 text-center mt-5 w-25 m-auto\">Un test fait par Romain MILLAN pour obtenir un stage dans l'entreprise <span class=\"fw-bolder\">spiri<span class=\"text-primary\">i</span>t</span></p>
+                <p id=\"textMainContent\" class=\"fs-4 text-center mt-5 w-25 m-auto\">Un test fait par Romain MILLAN pour obtenir un stage dans l'entreprise <span class=\"fw-bolder\">spiri<span class=\"text-primary\">i</span>t</span></p>
             </div>
             
         ";
@@ -300,7 +300,7 @@ class __TwigTemplate_ff5bf83352eeceb1ffaa424520cb72c7 extends Template
                     <a href=\"{{ path('product_list') }}\" class=\"nav-link\">Produit</a>
                 </li>
                 <li class=\"nav-item\">
-                    <a href=\"{{ path('cart_index') }}\"><button class=\"btn btn-primary\">Panier ({{ numberProductOnCart }})</button></a>
+                    <a href=\"{{ path('cart_index') }}\"><button class=\"btn btn-primary\"><p id=\"cartButtonNumberProduct\">Panier ({{ numberProductOnCart }})</p></button></a>
                 </li>
             </ul>
         </nav>
@@ -320,7 +320,7 @@ class __TwigTemplate_ff5bf83352eeceb1ffaa424520cb72c7 extends Template
                     <h3 class=\"ms-3 h-auto fw-semibold\">Test-Symfony</h3>
                 </div>
 
-                <p class=\"fs-4 text-center mt-5 w-25 m-auto\">Un test fait par Romain MILLAN pour obtenir un stage dans l'entreprise <span class=\"fw-bolder\">spiri<span class=\"text-primary\">i</span>t</span></p>
+                <p id=\"textMainContent\" class=\"fs-4 text-center mt-5 w-25 m-auto\">Un test fait par Romain MILLAN pour obtenir un stage dans l'entreprise <span class=\"fw-bolder\">spiri<span class=\"text-primary\">i</span>t</span></p>
             </div>
             
         {% endblock %}
