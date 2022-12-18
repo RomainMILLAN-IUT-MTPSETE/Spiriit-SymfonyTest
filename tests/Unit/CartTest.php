@@ -17,11 +17,4 @@ class CartTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('h3', "Vote panier:");
     }
-
-    public function testNumberOfProductOnCartPage(): void{
-        $client = static::createClient();
-
-        $session = new Session(new MockArraySessionStorage());
-
-    }
 }
