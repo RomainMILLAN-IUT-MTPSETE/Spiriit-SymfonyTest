@@ -7,7 +7,7 @@
 /public/bundles/
 /vendor/
 var/cache
-var/log
+gvar/log
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###

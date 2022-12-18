@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
-class CartTest extends TestCase
-{
+class CartTest extends TestCase{
+
     public function testNumberProductOnCart(): void{
         $session = new Session(new MockArraySessionStorage());
 
