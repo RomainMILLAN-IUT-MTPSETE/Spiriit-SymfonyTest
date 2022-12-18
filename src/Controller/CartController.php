@@ -50,7 +50,7 @@ class CartController extends AbstractController{
 
 
         //Création d'un messageFlash quand cela marche
-        $this->addFlash('success', 'Produit ajouté à votre panier avec succèes');
+        $this->addFlash('success', 'Produit ajouté à votre panier avec success');
 
         //Je retourne vers la page principale
         return $this->redirectToRoute('cart_index');
@@ -66,6 +66,49 @@ class CartController extends AbstractController{
         return $this->redirectToRoute('cart_index');
     }
 
+    #[Route('/panier/remove/{id<\d+>}', name: 'cart_remove')]
+    public function deleteProductInCart(int $id, RequestStack $requestStack): Response{
+        //Si l'identifiant 0
+        if($id == 0){
+            //Creation d'un messageFlash
+            $this->addFlash('warning', 'Impossible de supprimer le produit avec l\'identifiant 0');
+            //Redirection vers la page de panier
+            return $this->redirectToRoute('cart_index');
+        }
+
+        //Je récupère la session actuelle de l'utilisateur
+        $session = $requestStack->getSession();
+
+        //Je récupère le tableau de produit qui est mits en session avec l'id 'products_cart' et s'il n'existe pas il retourne un tableau vide
+        $products = $session->get('products_cart');
+
+        //Si la liste de produit n'existe pas dans la session de l'utilisateur
+        if($products == null){
+            //Creation d'un messageFlash
+            $this->addFlash('warning', 'Aucun produit dans le panier');
+            //Redirection vers la page de panier
+            return $this->redirectToRoute('cart_index');
+        }
+
+        //Si l'identifiant n'existe pas dans le tableau de produit
+        if(!array_key_exists($id, $products)){
+            //Creation d'un messageFlash
+            $this->addFlash('warning', 'Le produit n\'est pas contenue dans la liste de produit');
+            //Redirection vers la page de panier
+            return $this->redirectToRoute('cart_index');
+        }
+
+        //Je supprime le tableau de la session
+        $session->remove('products_cart');
+        //Je reset le nouveau tableau dans la session
+        $session->set('products_cart', $this->removeProductToList($products, $id));
+
+        //Création d'un messageFlash quand cela marche
+        $this->addFlash('success', 'Produit supprimé de votre panier avec success');
+        //Je retourne vers la page principale de panier
+        return $this->redirectToRoute('cart_index');
+    }
+
 
 
     /*
@@ -78,7 +121,6 @@ class CartController extends AbstractController{
      * @return array
      * Permet d'ajouter un produit ou de mettre à jour un tableau passer en paramètre
      */
-    //Mets à jour ou ajoute le produit dans la liste des produits du panier
     public function addProductToCartList($products, $id_product, $nb_product): array{
         //Si l'identifiant du produit que l'utilsiateur existe
         if(array_key_exists($id_product, $products)){
@@ -100,7 +142,6 @@ class CartController extends AbstractController{
      * @return array
      * Retourne la liste des produits contenue dans la session
      */
-    //Fonction qui retourne la liste des produits dans le panier pour l'affichage
     public function getListProductInCart(ManagerRegistry $managerRegistry, $productsSession): array{
         //Je crée une liste vide
         $productsList = [];
@@ -115,7 +156,7 @@ class CartController extends AbstractController{
                 $priceFinalItem = $value*$productItem->getPrice();
 
                 //"Je mets à jour la liste '$productsList' en y ajoutant un tableau contenant (le nom, la description, la quantité, le quantité et le prix final du produit)
-                array_push($productsList, [$productItem->getName(), $productItem->getDescription(), $value, $priceFinalItem]);
+                array_push($productsList, [$productItem->getId(), $productItem->getName(), $productItem->getDescription(), $value, $priceFinalItem]);
             }
         }
 
@@ -149,7 +190,6 @@ class CartController extends AbstractController{
      * @return float
      * Retourne un float qui désigne le prix total des produits contenu dans la liste 'productsSession'
      */
-    //Fonction qui permet de calculer le cout total du panier
     public function getTotalPrice($productsPrice, $productsSession): float{
         //Je crée une variable globale et je lui assigne une valeur de 0
         $priceTotal = 0.0;
@@ -174,7 +214,6 @@ class CartController extends AbstractController{
      * @return int
      * Retourne le nombre de produits contenu dans la session
      */
-    //Fonction qui permet de calculer le nombre de produits dans la session
     public static function getNumberProductOnCart(Session $session): int{
         //Recupération du tableau de produits stocké en session
         $productsOnCart = $session->get('products_cart');
@@ -193,6 +232,22 @@ class CartController extends AbstractController{
 
         //Retourne le nombre de produit dans le panier
         return $numberProductOnCart;
+    }
+
+    /**
+     * @param $products
+     * @param $id_product
+     * @return array
+     * Retourne la liste des produits passer en paramètres sans le produit passer aussi en parametre
+     */
+    public function removeProductToList($products, $id_product): array{
+        //Si l'identifiant du produit est contenue dans la liste de produit
+        if(array_key_exists($id_product, $products)){
+            //Je supprime le produit de la liste
+            unset($products[$id_product]);
+        }
+
+        return $products;
     }
 
 }

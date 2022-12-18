@@ -8,6 +8,7 @@
         <table class="table w-75 m-auto">
             <thead>
                 <tr>
+                    <th scope="col">Action</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Description</th>
                     <th scope="col">Quantité</th>
@@ -17,10 +18,11 @@
             <tbody>
                 {% for product in products %}
                     <tr>
-                        <th scope="row" class="fw-normal">{{ product[0] }}</th>
-                        <th class="fw-normal">{{ product[1] }}</th>
+                        <th class="text-center"><a class="coul-red text-decoration-none fw-bolder" href="{{ path('cart_remove', {'id': product[0]}) }}">X</a></th>
+                        <th scope="row" class="fw-normal">{{ product[1] }}</th>
                         <th class="fw-normal">{{ product[2] }}</th>
                         <th class="fw-normal">{{ product[3] }}</th>
+                        <th class="fw-normal">{{ product[4] }}</th>
                     </tr>
                 {% endfor %}
             </tbody>

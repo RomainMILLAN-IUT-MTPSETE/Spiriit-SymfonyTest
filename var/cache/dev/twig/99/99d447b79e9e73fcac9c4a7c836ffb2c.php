@@ -74,6 +74,7 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
         <table class=\"table w-75 m-auto\">
             <thead>
                 <tr>
+                    <th scope=\"col\">Action</th>
                     <th scope=\"col\">Nom</th>
                     <th scope=\"col\">Description</th>
                     <th scope=\"col\">Quantité</th>
@@ -82,27 +83,31 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
             </thead>
             <tbody>
                 ";
-        // line 18
+        // line 19
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 18, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 19, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 19
-            echo "                    <tr>
-                        <th scope=\"row\" class=\"fw-normal\">";
             // line 20
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 0, [], "array", false, false, false, 20), "html", null, true);
-            echo "</th>
-                        <th class=\"fw-normal\">";
+            echo "                    <tr>
+                        <th class=\"text-center\"><a class=\"coul-red text-decoration-none fw-bolder\" href=\"";
             // line 21
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 1, [], "array", false, false, false, 21), "html", null, true);
-            echo "</th>
-                        <th class=\"fw-normal\">";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_remove", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], 0, [], "array", false, false, false, 21)]), "html", null, true);
+            echo "\">X</a></th>
+                        <th scope=\"row\" class=\"fw-normal\">";
             // line 22
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 2, [], "array", false, false, false, 22), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 1, [], "array", false, false, false, 22), "html", null, true);
             echo "</th>
                         <th class=\"fw-normal\">";
             // line 23
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 3, [], "array", false, false, false, 23), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 2, [], "array", false, false, false, 23), "html", null, true);
+            echo "</th>
+                        <th class=\"fw-normal\">";
+            // line 24
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 3, [], "array", false, false, false, 24), "html", null, true);
+            echo "</th>
+                        <th class=\"fw-normal\">";
+            // line 25
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 4, [], "array", false, false, false, 25), "html", null, true);
             echo "</th>
                     </tr>
                 ";
@@ -110,17 +115,17 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 26
+        // line 28
         echo "            </tbody>
         </table>
 
         <div class=\"d-flex flex-row justify-content-between w-75 m-auto mt-5\">
             <p><span class=\"fw-semibold\">Total:</span> ";
-        // line 30
-        echo twig_escape_filter($this->env, (isset($context["priceTotal"]) || array_key_exists("priceTotal", $context) ? $context["priceTotal"] : (function () { throw new RuntimeError('Variable "priceTotal" does not exist.', 30, $this->source); })()), "html", null, true);
+        // line 32
+        echo twig_escape_filter($this->env, (isset($context["priceTotal"]) || array_key_exists("priceTotal", $context) ? $context["priceTotal"] : (function () { throw new RuntimeError('Variable "priceTotal" does not exist.', 32, $this->source); })()), "html", null, true);
         echo "</p>
             <a href=\"";
-        // line 31
+        // line 33
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_clear");
         echo "\"><button class=\"btn btn-dark\" id=\"clearCart\">Vider le panier</button></a>
         </div>
@@ -146,7 +151,7 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
 
     public function getDebugInfo()
     {
-        return array (  124 => 31,  120 => 30,  114 => 26,  105 => 23,  101 => 22,  97 => 21,  93 => 20,  90 => 19,  86 => 18,  71 => 6,  68 => 5,  58 => 4,  35 => 2,);
+        return array (  129 => 33,  125 => 32,  119 => 28,  110 => 25,  106 => 24,  102 => 23,  98 => 22,  94 => 21,  91 => 20,  87 => 19,  71 => 6,  68 => 5,  58 => 4,  35 => 2,);
     }
 
     public function getSourceContext()
@@ -161,6 +166,7 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
         <table class=\"table w-75 m-auto\">
             <thead>
                 <tr>
+                    <th scope=\"col\">Action</th>
                     <th scope=\"col\">Nom</th>
                     <th scope=\"col\">Description</th>
                     <th scope=\"col\">Quantité</th>
@@ -170,10 +176,11 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
             <tbody>
                 {% for product in products %}
                     <tr>
-                        <th scope=\"row\" class=\"fw-normal\">{{ product[0] }}</th>
-                        <th class=\"fw-normal\">{{ product[1] }}</th>
+                        <th class=\"text-center\"><a class=\"coul-red text-decoration-none fw-bolder\" href=\"{{ path('cart_remove', {'id': product[0]}) }}\">X</a></th>
+                        <th scope=\"row\" class=\"fw-normal\">{{ product[1] }}</th>
                         <th class=\"fw-normal\">{{ product[2] }}</th>
                         <th class=\"fw-normal\">{{ product[3] }}</th>
+                        <th class=\"fw-normal\">{{ product[4] }}</th>
                     </tr>
                 {% endfor %}
             </tbody>

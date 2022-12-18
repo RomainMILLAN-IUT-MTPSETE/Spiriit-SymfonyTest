@@ -19,6 +19,7 @@ return [
     'cart_index' => [[], ['_controller' => 'App\\Controller\\CartController::index'], [], [['text', '/panier']], [], [], []],
     'cart_add' => [[], ['_controller' => 'App\\Controller\\CartController::addToCart'], [], [['text', '/panier/add']], [], [], []],
     'cart_clear' => [[], ['_controller' => 'App\\Controller\\CartController::clearCart'], [], [['text', '/panier/clear']], [], [], []],
+    'cart_remove' => [['id'], ['_controller' => 'App\\Controller\\CartController::deleteProductInCart'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/panier/remove']], [], [], []],
     'homepage' => [[], ['_controller' => 'App\\Controller\\DefaultController::homepage'], [], [['text', '/']], [], [], []],
     'product_list' => [[], ['_controller' => 'App\\Controller\\ProductController::list'], [], [['text', '/produits']], [], [], []],
     'product_show' => [['id'], ['id' => '0', '_controller' => 'App\\Controller\\ProductController::show'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/produits/see']], [], [], []],

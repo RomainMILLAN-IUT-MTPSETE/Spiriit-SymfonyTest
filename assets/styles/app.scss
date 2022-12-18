@@ -12,6 +12,10 @@ body {
   background-color: $background;
 }
 
+.coul-red {
+  color: red;
+}
+
 
 @import url('header.scss');
 @import url('footer.scss');
