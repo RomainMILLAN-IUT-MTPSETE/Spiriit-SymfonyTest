@@ -20,7 +20,7 @@ class CartController extends AbstractController{
         $productsSession = $requestStack->getSession()->get('products_cart');
 
         //Je retourne le rendue du fichier 'cart.html.twig' avec les variables en paramètres
-        return $this->render('cart/cart.html.twig', ['products' => $this->getListProductInCart($managerRegistry, $productsSession), 'priceTotal' => $this->getTotalPrice($managerRegistry, $productsSession), 'numberProductOnCart' => self::getNumberProductOnCart($requestStack->getSession())]);
+        return $this->render('cart/cart.html.twig', ['products' => $this->getListProductInCart($managerRegistry, $productsSession), 'priceTotal' => $this->getTotalPrice($this->getProductsPrice($managerRegistry), $productsSession), 'numberProductOnCart' => self::getNumberProductOnCart($requestStack->getSession())]);
     }
 
     //Route avec l'URL /panier/add et le nom cart_add
@@ -105,8 +105,23 @@ class CartController extends AbstractController{
         return $productsList;
     }
 
+    public function getProductsPrice(ManagerRegistry $managerRegistry): array{
+        //Creation d'une liste vide
+        $productsPrice = array();
+
+        //Recupération de la liste de tous les produits
+        $products = $managerRegistry->getRepository(Product::class)->findAll();
+        //Pour chaque produit dans la liste
+        foreach($products as $item){
+            //Je push dans la liste l'identifiant et le prix
+            $productsPrice[$item->getId()] = $item->getPrice();
+        }
+
+        return $productsPrice;
+    }
+
     //Fonction qui permet de calculer le cout total du panier
-    public function getTotalPrice(ManagerRegistry $managerRegistry, $productsSession): float{
+    public function getTotalPrice($productsPrice, $productsSession): float{
         //Je crée une variable globale et je lui assigne une valeur de 0
         $priceTotal = 0.0;
 
@@ -114,10 +129,8 @@ class CartController extends AbstractController{
         if($productsSession != null){
             //Pour chaque produit dans la liste, avec les clés dans la variable $key et les valeurs dans la variable $value
             foreach($productsSession as $key => $value){
-                //Je récupère le produit courant à partir de la base de données
-                $productItem = $managerRegistry->getRepository(Product::class)->find($key);
                 //Je crée une variable appelée 'courante' pour stocker le prix du produit en fonction de la quantité choisie
-                $priceFinalItem = $value*$productItem->getPrice();
+                $priceFinalItem = $value*$productsPrice[$key];
                 //Je met à jour le prix final en ajoutant la valeur de la variable 'courante' au prix total
                 $priceTotal = $priceTotal + $priceFinalItem;
             }
