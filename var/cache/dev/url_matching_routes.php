@@ -49,7 +49,7 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         193 => [
-            [['_route' => 'product_show', 'id' => '13', '_controller' => 'App\\Controller\\ProductController::show'], ['id'], null, null, false, true, null],
+            [['_route' => 'product_show', 'id' => '0', '_controller' => 'App\\Controller\\ProductController::show'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

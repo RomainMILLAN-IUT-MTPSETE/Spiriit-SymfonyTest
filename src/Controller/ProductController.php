@@ -25,16 +25,19 @@ class ProductController extends AbstractController{
     }
 
     //Route avec l'URL /produits/ avec un identifiant de produit et le nom 'product_show'
-    #[Route('/produits/see/{id<\d+>?13}', name: 'product_show')]
+    #[Route('/produits/see/{id<\d+>?0}', name: 'product_show')]
     public function show(ManagerRegistry $doctrine, int $id, RequestStack $requestStack): Response{
-        //Si l'identifiant passer en paramètre est < 1
-        if($id < 1){
-            //Redirection vers la liste des produits
-            return $this->redirectToRoute('product_list');
-        }
-
         //Récupération du manager
         $entityManager = $doctrine->getManager();
+
+        //Si l'identifiant est 0 (Donc préremplie par le code
+        if($id == 0){
+            //Récupération du premier identifiant produit
+            $id = $entityManager->getRepository(Product::class)->findOneBy(array(), array('id' => 'ASC'))->getId();
+
+            //Redirection vers la bonne page
+            return $this->redirectToRoute('product_show', ['id' => $id]);
+        }
 
         //Récupération du produit avec l'identifiant $id
         $product = $entityManager->getRepository(Product::class)->find($id);
