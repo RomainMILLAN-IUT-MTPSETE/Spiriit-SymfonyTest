@@ -6,8 +6,8 @@
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /vendor/
-var/cache
-gvar/log
+/var/cache/*g
+/var/log/
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###

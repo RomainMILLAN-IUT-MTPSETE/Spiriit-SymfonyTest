@@ -25,7 +25,7 @@ class ProductController extends AbstractController{
     }
 
     //Route avec l'URL /produits/ avec un identifiant de produit et le nom 'product_show'
-    #[Route('/produits/{id}', name: 'product_show')]
+    #[Route('/produits/see/{id<\d+>?13}', name: 'product_show')]
     public function show(ManagerRegistry $doctrine, int $id, RequestStack $requestStack): Response{
         //Si l'identifiant passer en paramètre est < 1
         if($id < 1){

@@ -16,12 +16,12 @@ return [
     ],
     [ // $regexpList
         0 => '{^(?'
-                .'|/produits/([^/]++)(*:25)'
+                .'|/produits/see(?:/(\\d+))?(*:31)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
-        25 => [
-            [['_route' => 'product_show', '_controller' => 'App\\Controller\\ProductController::show'], ['id'], null, null, false, true, null],
+        31 => [
+            [['_route' => 'product_show', 'id' => '13', '_controller' => 'App\\Controller\\ProductController::show'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

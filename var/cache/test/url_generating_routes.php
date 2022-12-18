@@ -8,5 +8,5 @@ return [
     'cart_clear' => [[], ['_controller' => 'App\\Controller\\CartController::clearCart'], [], [['text', '/panier/clear']], [], [], []],
     'homepage' => [[], ['_controller' => 'App\\Controller\\DefaultController::homepage'], [], [['text', '/']], [], [], []],
     'product_list' => [[], ['_controller' => 'App\\Controller\\ProductController::list'], [], [['text', '/produits']], [], [], []],
-    'product_show' => [['id'], ['_controller' => 'App\\Controller\\ProductController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/produits']], [], [], []],
+    'product_show' => [['id'], ['id' => '13', '_controller' => 'App\\Controller\\ProductController::show'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/produits/see']], [], [], []],
 ];
