@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="product-list--container">
-        <h3 class="mt-5 ms-3">Liste des produits ({{ products|length }}):</h3>
+        <h3 class="mt-5 ms-3" id="productListTitle">Liste des produits ({{ products|length }}):</h3>
 
         <div class="row m-lg-2 m-md-2">
             {% for product in products %}

@@ -20,4 +20,12 @@ class ProductTest extends WebTestCase{
 
         $this->assertResponseIsSuccessful();
     }
+
+    public function testNumberProductOnTitlePage(): void{
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/produits');
+
+        $this->assertSelectorExists("h3#productListTitle");
+        $this->assertSelectorTextSame('h3#productListTitle', 'Liste des produits (12):');
+    }
 }

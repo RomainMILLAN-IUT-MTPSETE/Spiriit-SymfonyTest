@@ -66,7 +66,7 @@ class __TwigTemplate_f686db6a186d1aa223ce3b67b3d3fced extends Template
 
         // line 5
         echo "    <div class=\"product-list--container\">
-        <h3 class=\"mt-5 ms-3\">Liste des produits (";
+        <h3 class=\"mt-5 ms-3\" id=\"productListTitle\">Liste des produits (";
         // line 6
         echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 6, $this->source); })())), "html", null, true);
         echo "):</h3>
@@ -135,7 +135,7 @@ class __TwigTemplate_f686db6a186d1aa223ce3b67b3d3fced extends Template
 
 {% block content %}
     <div class=\"product-list--container\">
-        <h3 class=\"mt-5 ms-3\">Liste des produits ({{ products|length }}):</h3>
+        <h3 class=\"mt-5 ms-3\" id=\"productListTitle\">Liste des produits ({{ products|length }}):</h3>
 
         <div class=\"row m-lg-2 m-md-2\">
             {% for product in products %}
