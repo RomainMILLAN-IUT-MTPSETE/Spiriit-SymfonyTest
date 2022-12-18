@@ -23,7 +23,8 @@ Suite à ceci, rendez-vous dans le dossier contenant le site avec `cd Spiriit-te
 
 
 ### Charger les fixtures
-Pour cette étape il vous faudrait télécharger Doctrine (`composer require --dev orm-fixtures`), mais aussi Symfony runtime (`composer require symfony/runtime`)
+Pour cette étape il vous faudrait télécharger Symfony runtime (`composer require symfony/runtime`), mais aussi Doctrine (`composer require --dev doctrine/doctrine-fixtures-bundle
+`) 
 
 Pour pouvoir chargers les fixtures il suffit d'utiliser la commande `php bin/console doctrine:fixtures:load`
 
@@ -31,7 +32,7 @@ Pour pouvoir chargers les fixtures il suffit d'utiliser la commande `php bin/con
 ### Compilation des assets
 Pour cette étape il vous faudrait télécharger Symfony Encore (`composer require symfony/webpack-encore-bundle`, `npm install`)
 
-Pour compiler les assets il suffit de lancer la commande `npm run`
+Pour compiler les assets il suffit de lancer la commande `npm run watch`
 
 
 ### Lancer le serveur
