@@ -1,6 +1,6 @@
 
 # Spiriit-Test-Symfony
-Repository pour le test de l'entreprise Spiriit, réalisé par Romain MILLAN.
+Repository pour le test de l'entreprise **Spiriit**, réalisé par **Romain MILLAN**.
 
 ## Installation du projet
 
@@ -8,7 +8,7 @@ Repository pour le test de l'entreprise Spiriit, réalisé par Romain MILLAN.
 *Il est recommandé d'utiliser un système d'exploitation de type **MacOS** ou **Linux***
 
 Pour pouvoir utiliser ce site web il vous faudrait plusieurs prérequis:
-- PHP supéieur à 8.1 (*Pour voir la version faite `php -v`*) que vous pouvez [télécharger ici](https://www.php.net/downloads)
+- PHP supérieur à 8.1 (*Pour voir la version faite `php -v`*) que vous pouvez [télécharger ici](https://www.php.net/downloads)
 
 - Composer que vous pouvez [télécharger ici](https://getcomposer.org/)
 
