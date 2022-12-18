@@ -40,4 +40,4 @@ Finalement il vous suffira de faire la commande `symfony server:start` pour pouv
 
 
 ## Test Unitaires & Fonctionnel
-Les tests ne sont pas encore implémentés mais si vous voulez essayer de les utiliser il suffit d'utiliser la commande `php bin/phpunit`
+Pour faire utiliser les tests il vous suffit d'utiliser la commande `php bin/phpunit`
