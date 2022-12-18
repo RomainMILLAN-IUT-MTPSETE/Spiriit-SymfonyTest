@@ -26,21 +26,21 @@ class CartController extends AbstractController{
     //Route avec l'URL /panier/add et le nom cart_add
     #[Route('/panier/add', name: 'cart_add')]
     public function addToCart(Request $request, RequestStack $requestStack): Response{
-        //Je get les éléments de la page précédente
+        //Je récupère les éléments de la page précédente
         $nb_product = $request->request->get('nb_product');
         $id_product = $request->request->get('id_product');
 
-        //Si l'un des deux n'est pas inscrit alors je crée un messageFlash et je retour sur la liste des produits
+        //Si l'un des deux n'est pas inscrit alors je crée un messageFlash et je retourne sur la liste des produits
         if($nb_product == null OR $id_product == null){
             $this->addFlash('danger', 'Aucun produit à ajouter');
             $this->redirectToRoute('product_list');
         }
 
 
-        //Je get la sessions actuelle de l'utilisateur
+        //Je récupère la session actuelle de l'utilisateur
         $session = $requestStack->getSession();
 
-        //Je get le tableau de produit qui est mits en session avec l'id 'products_cart' et si il n'existe pas il retour un tableau vide
+        //Je récupère le tableau de produit qui est mits en session avec l'id 'products_cart' et s'il n'existe pas il retourne un tableau vide
         $products = $session->get('products_cart', []);
 
         //Je supprime le tableau de la session
@@ -66,7 +66,19 @@ class CartController extends AbstractController{
         return $this->redirectToRoute('cart_index');
     }
 
-    //Mets a jour ou ajoute le produit dans la liste des produits du paniel
+
+
+    /*
+     * FONCTION
+     */
+    /**
+     * @param $products
+     * @param $id_product
+     * @param $nb_product
+     * @return array
+     * Permet d'ajouter un produit ou de mettre à jour un tableau passer en paramètre
+     */
+    //Mets à jour ou ajoute le produit dans la liste des produits du panier
     public function addProductToCartList($products, $id_product, $nb_product): array{
         //Si l'identifiant du produit que l'utilsiateur existe
         if(array_key_exists($id_product, $products)){
@@ -82,6 +94,12 @@ class CartController extends AbstractController{
         return $products;
     }
 
+    /**
+     * @param ManagerRegistry $managerRegistry
+     * @param $productsSession
+     * @return array
+     * Retourne la liste des produits contenue dans la session
+     */
     //Fonction qui retourne la liste des produits dans le panier pour l'affichage
     public function getListProductInCart(ManagerRegistry $managerRegistry, $productsSession): array{
         //Je crée une liste vide
@@ -105,6 +123,11 @@ class CartController extends AbstractController{
         return $productsList;
     }
 
+    /**
+     * @param ManagerRegistry $managerRegistry
+     * @return array
+     * Retourne une liste contenant tous les prix des produits
+     */
     public function getProductsPrice(ManagerRegistry $managerRegistry): array{
         //Creation d'une liste vide
         $productsPrice = array();
@@ -120,6 +143,12 @@ class CartController extends AbstractController{
         return $productsPrice;
     }
 
+    /**
+     * @param $productsPrice
+     * @param $productsSession
+     * @return float
+     * Retourne un float qui désigne le prix total des produits contenu dans la liste 'productsSession'
+     */
     //Fonction qui permet de calculer le cout total du panier
     public function getTotalPrice($productsPrice, $productsSession): float{
         //Je crée une variable globale et je lui assigne une valeur de 0
@@ -136,10 +165,15 @@ class CartController extends AbstractController{
             }
         }
 
-        //Je retourne le prix totale
+        //Je retourne le prix total
         return $priceTotal;
     }
 
+    /**
+     * @param Session $session
+     * @return int
+     * Retourne le nombre de produits contenu dans la session
+     */
     //Fonction qui permet de calculer le nombre de produits dans la session
     public static function getNumberProductOnCart(Session $session): int{
         //Recupération du tableau de produits stocké en session

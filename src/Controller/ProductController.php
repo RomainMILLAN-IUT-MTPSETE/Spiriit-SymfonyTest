@@ -17,7 +17,7 @@ class ProductController extends AbstractController{
         //Récupération du manager
         $entityManager = $doctrine->getManager();
 
-        //Récupération de tous les produit par ordre de nom ASCENDANT
+        //Récupération de tous les produits par ordre de nom ASCENDANT
         $products = $entityManager->getRepository(Product::class)->findBy(array(), array('name' => 'ASC'));
 
         //Retourne le rendu de la page products/list.html.twig avec tous les paramètres
