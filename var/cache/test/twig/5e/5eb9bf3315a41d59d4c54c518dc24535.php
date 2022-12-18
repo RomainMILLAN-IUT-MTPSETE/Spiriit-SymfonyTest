@@ -88,19 +88,19 @@ class __TwigTemplate_7606fcc384982c18bd1cd25005624bab extends Template
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
             // line 19
             echo "                    <tr>
-                        <th scope=\"row\">";
+                        <th scope=\"row\" class=\"fw-normal\">";
             // line 20
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 0, [], "array", false, false, false, 20), "html", null, true);
             echo "</th>
-                        <th>";
+                        <th class=\"fw-normal\">";
             // line 21
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 1, [], "array", false, false, false, 21), "html", null, true);
             echo "</th>
-                        <th>";
+                        <th class=\"fw-normal\">";
             // line 22
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 2, [], "array", false, false, false, 22), "html", null, true);
             echo "</th>
-                        <th>";
+                        <th class=\"fw-normal\">";
             // line 23
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 3, [], "array", false, false, false, 23), "html", null, true);
             echo "</th>
@@ -170,10 +170,10 @@ class __TwigTemplate_7606fcc384982c18bd1cd25005624bab extends Template
             <tbody>
                 {% for product in products %}
                     <tr>
-                        <th scope=\"row\">{{ product[0] }}</th>
-                        <th>{{ product[1] }}</th>
-                        <th>{{ product[2] }}</th>
-                        <th>{{ product[3] }}</th>
+                        <th scope=\"row\" class=\"fw-normal\">{{ product[0] }}</th>
+                        <th class=\"fw-normal\">{{ product[1] }}</th>
+                        <th class=\"fw-normal\">{{ product[2] }}</th>
+                        <th class=\"fw-normal\">{{ product[3] }}</th>
                     </tr>
                 {% endfor %}
             </tbody>
