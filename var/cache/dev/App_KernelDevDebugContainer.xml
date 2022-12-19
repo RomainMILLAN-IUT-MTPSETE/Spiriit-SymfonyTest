@@ -348,6 +348,17 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Command\ExportProductCommand" class="App\Command\ExportProductCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <call method="setName">
+        <argument>app:exportProduct</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Export all product in a CSV file</argument>
+      </call>
+    </service>
     <service id="App\Controller\CartController" class="App\Controller\CartController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -6252,6 +6263,8 @@
     <service id="doctrine.fixtures.purger.orm_purger_factory" class="Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory">
       <tag name="doctrine.fixtures.purger_factory" alias="default"/>
     </service>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\ExportProductCommand" class="App\Command\ExportProductCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Command\ExportProductCommand" class="App\Command\ExportProductCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CartController" class="App\Controller\CartController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CartController" class="App\Controller\CartController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CartController" class="App\Controller\CartController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7522,6 +7535,13 @@
     </service>
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
     <service id=".errored..service_locator.91QYP5y.Symfony\Component\HttpFoundation\Session\Session" class="Symfony\Component\HttpFoundation\Session\Session"/>
+    <service id=".App\Command\ExportProductCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>app:exportProduct</argument>
+      <argument type="collection"/>
+      <argument>Export all product in a CSV file</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="App\Command\ExportProductCommand"/>
+    </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
       <argument type="collection"/>
@@ -8017,8 +8037,9 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.SfiCXNA"/>
+      <argument type="service" id=".service_locator.NX4aFpG"/>
       <argument type="collection">
+        <argument key="app:exportProduct">App\Command\ExportProductCommand</argument>
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
         <argument key="cache:clear">console.command.cache_clear</argument>
@@ -8126,9 +8147,10 @@
         <argument key="make:stimulus-controller">maker.auto_command.make_stimulus_controller</argument>
       </argument>
     </service>
-    <service id=".service_locator.SfiCXNA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.NX4aFpG" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Command\ExportProductCommand" type="service_closure" id=".App\Command\ExportProductCommand.lazy"/>
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
         <argument key="console.command.assets_install" type="service_closure" id=".console.command.assets_install.lazy"/>
         <argument key="console.command.cache_clear" type="service_closure" id=".console.command.cache_clear.lazy"/>
