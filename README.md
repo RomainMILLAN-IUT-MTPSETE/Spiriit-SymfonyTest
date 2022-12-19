@@ -61,7 +61,7 @@ Pour faire utiliser les tests il vous suffit d'utiliser la commande `php bin/php
 
 ✕ Page panier : pouvoir modifier les quantités
 
-**✓** Page panier : pouvoir supprimer un produit
+**✓** Page panier : pouvoir supprimer un produit (`/panier` - `/panier/remove/{id}`)
 
 ---
 
