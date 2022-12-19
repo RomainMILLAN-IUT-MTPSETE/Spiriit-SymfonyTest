@@ -5,10 +5,8 @@ Repository pour le test de l'entreprise **Spiriit**, réalisé par **Romain MILL
 ## Installation du projet
 
 ### Prérequis
-*Il est recommandé d'utiliser un système d'exploitation de type **MacOS** ou **Linux***
-
 Pour pouvoir utiliser ce site web il vous faudrait plusieurs prérequis:
-- PHP supérieur à 8.1 (*Pour voir la version faite `php -v`*) que vous pouvez [télécharger ici](https://www.php.net/downloads)
+- PHP supérieur à __**8.1**__ (*Pour voir la version faite `php -v`*) que vous pouvez [télécharger ici](https://www.php.net/downloads)
 
 - Composer que vous pouvez [télécharger ici](https://getcomposer.org/)
 
