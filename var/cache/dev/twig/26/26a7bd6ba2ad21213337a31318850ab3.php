@@ -67,12 +67,18 @@ class __TwigTemplate_b186d09bda893d5a4a4c3e15b2a1783c extends Template
         // line 19
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
+    
+    <!--Link favicon-->
+    <link rel=\"shortcut icon\" href=\"";
+        // line 22
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/spiriit-favicon.png"), "html", null, true);
+        echo "\" type=\"image/x-icon\">
 </head>
 <body>
     <header class=\"sts-header bg-light\">
         <div class=\"d-flex align-items-center ms-3\">
             <img src=\"";
-        // line 24
+        // line 27
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/spiriit-logo.svg"), "html", null, true);
         echo "\" class=\"h-auto\" alt=\"Logo spiriit\"/>
             <h1 class=\"ms-2\">Test-Symfony</h1>
@@ -81,22 +87,22 @@ class __TwigTemplate_b186d09bda893d5a4a4c3e15b2a1783c extends Template
             <ul class=\"nav\">
                 <li class=\"nav-item\">
                     <a href=\"";
-        // line 30
+        // line 33
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage");
         echo "\" class=\"nav-link\">Accueil</a>
                 </li>
                 <li class=\"nav-item\">
                     <a href=\"";
-        // line 33
+        // line 36
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("product_list");
         echo "\" class=\"nav-link\">Produit</a>
                 </li>
                 <li class=\"nav-item\">
                     <a href=\"";
-        // line 36
+        // line 39
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_index");
         echo "\"><button class=\"btn btn-primary\"><p id=\"cartButtonNumberProduct\">Panier (";
-        echo twig_escape_filter($this->env, (isset($context["numberProductOnCart"]) || array_key_exists("numberProductOnCart", $context) ? $context["numberProductOnCart"] : (function () { throw new RuntimeError('Variable "numberProductOnCart" does not exist.', 36, $this->source); })()), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["numberProductOnCart"]) || array_key_exists("numberProductOnCart", $context) ? $context["numberProductOnCart"] : (function () { throw new RuntimeError('Variable "numberProductOnCart" does not exist.', 39, $this->source); })()), "html", null, true);
         echo ")</p></button></a>
                 </li>
             </ul>
@@ -104,21 +110,21 @@ class __TwigTemplate_b186d09bda893d5a4a4c3e15b2a1783c extends Template
     </header>
     <main>
         ";
-        // line 42
+        // line 45
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 42, $this->source); })()), "flashes", [], "any", false, false, false, 42));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 45, $this->source); })()), "flashes", [], "any", false, false, false, 45));
         foreach ($context['_seq'] as $context["label"] => $context["messages"]) {
-            // line 43
+            // line 46
             echo "            ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($context["messages"]);
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 44
+                // line 47
                 echo "                <div class=\"alert alert-";
                 echo twig_escape_filter($this->env, $context["label"], "html", null, true);
                 echo "\" role=\"alert\">
                     ";
-                // line 45
+                // line 48
                 echo twig_escape_filter($this->env, $context["message"], "html", null, true);
                 echo "
                 </div>
@@ -127,16 +133,16 @@ class __TwigTemplate_b186d09bda893d5a4a4c3e15b2a1783c extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 48
+            // line 51
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['label'], $context['messages'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 49
+        // line 52
         echo "        ";
         $this->displayBlock('content', $context, $blocks);
-        // line 60
+        // line 63
         echo "    </main>
     <footer class=\"footer\">
         <p class=\"m-3\">Romain MILLAN © 2022 - Tous droits réservés - <a href=\"#\">Mentions légales</a></p>
@@ -216,7 +222,7 @@ class __TwigTemplate_b186d09bda893d5a4a4c3e15b2a1783c extends Template
 
     }
 
-    // line 49
+    // line 52
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -226,11 +232,11 @@ class __TwigTemplate_b186d09bda893d5a4a4c3e15b2a1783c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 50
+        // line 53
         echo "            <div>
                 <div class=\"mt-5 d-flex flex-column align-items-center h-auto\">
                     <img class=\"h-auto\" src=\"";
-        // line 52
+        // line 55
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/spiriit-logo.svg"), "html", null, true);
         echo "\" alt=\"Logo spiriit\">
                     <h3 class=\"ms-3 h-auto fw-semibold\">Test-Symfony</h3>
@@ -260,7 +266,7 @@ class __TwigTemplate_b186d09bda893d5a4a4c3e15b2a1783c extends Template
 
     public function getDebugInfo()
     {
-        return array (  234 => 52,  230 => 50,  220 => 49,  201 => 19,  188 => 16,  178 => 15,  165 => 12,  155 => 11,  140 => 60,  137 => 49,  131 => 48,  122 => 45,  117 => 44,  112 => 43,  108 => 42,  97 => 36,  91 => 33,  85 => 30,  76 => 24,  68 => 19,  65 => 18,  63 => 15,  60 => 14,  58 => 11,  47 => 2,);
+        return array (  240 => 55,  236 => 53,  226 => 52,  207 => 19,  194 => 16,  184 => 15,  171 => 12,  161 => 11,  146 => 63,  143 => 52,  137 => 51,  128 => 48,  123 => 47,  118 => 46,  114 => 45,  103 => 39,  97 => 36,  91 => 33,  82 => 27,  74 => 22,  68 => 19,  65 => 18,  63 => 15,  60 => 14,  58 => 11,  47 => 2,);
     }
 
     public function getSourceContext()
@@ -284,6 +290,9 @@ class __TwigTemplate_b186d09bda893d5a4a4c3e15b2a1783c extends Template
     {% endblock %}
     
     <title>{% block title %}STS / Homepage{% endblock %}</title>
+    
+    <!--Link favicon-->
+    <link rel=\"shortcut icon\" href=\"{{ asset('img/spiriit-favicon.png') }}\" type=\"image/x-icon\">
 </head>
 <body>
     <header class=\"sts-header bg-light\">
