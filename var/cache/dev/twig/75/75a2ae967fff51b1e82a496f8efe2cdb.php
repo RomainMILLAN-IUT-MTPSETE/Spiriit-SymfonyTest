@@ -25,6 +25,7 @@ class __TwigTemplate_a2ad67e3caac51ee9948827df5729ccf extends Template
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
+            'title' => [$this, 'block_title'],
             'content' => [$this, 'block_content'],
         ];
     }
@@ -55,6 +56,25 @@ class __TwigTemplate_a2ad67e3caac51ee9948827df5729ccf extends Template
     }
 
     // line 4
+    public function block_title($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        echo "STS / Liste des produits";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 6
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -64,34 +84,34 @@ class __TwigTemplate_a2ad67e3caac51ee9948827df5729ccf extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 5
+        // line 7
         echo "    <div class=\"product-list--container\">
         <h3 class=\"mt-5 ms-3\" id=\"productListTitle\">Liste des produits (";
-        // line 6
-        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 6, $this->source); })())), "html", null, true);
+        // line 8
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 8, $this->source); })())), "html", null, true);
         echo "):</h3>
 
         <div class=\"row m-lg-2 m-md-2\">
             ";
-        // line 9
+        // line 11
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 9, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 11, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 10
+            // line 12
             echo "                <div class=\"col-sm-4 mt-4\">
                     <div class=\"product-item card\">
                         <div class=\"card-body\">
                             <p class=\"card-title\">";
-            // line 13
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 13), "html", null, true);
+            // line 15
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "name", [], "any", false, false, false, 15), "html", null, true);
             echo "</p>
                             <p class=\"card-text\">";
-            // line 14
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 14), "html", null, true);
+            // line 16
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "description", [], "any", false, false, false, 16), "html", null, true);
             echo "</p>
                             <a href=\"";
-            // line 15
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("product_show", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 15)]), "html", null, true);
+            // line 17
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("product_show", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 17)]), "html", null, true);
             echo "\"><button class=\"btn btn-primary\">Voir la fiche</button></a>
                         </div>
                     </div>
@@ -101,7 +121,7 @@ class __TwigTemplate_a2ad67e3caac51ee9948827df5729ccf extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 20
+        // line 22
         echo "        </div>
     </div>
 ";
@@ -125,13 +145,15 @@ class __TwigTemplate_a2ad67e3caac51ee9948827df5729ccf extends Template
 
     public function getDebugInfo()
     {
-        return array (  105 => 20,  94 => 15,  90 => 14,  86 => 13,  81 => 10,  77 => 9,  71 => 6,  68 => 5,  58 => 4,  35 => 2,);
+        return array (  125 => 22,  114 => 17,  110 => 16,  106 => 15,  101 => 12,  97 => 11,  91 => 8,  88 => 7,  78 => 6,  59 => 4,  36 => 2,);
     }
 
     public function getSourceContext()
     {
         return new Source("{# templates/product/list #}
 {% extends 'base.html.twig' %}
+
+{% block title 'STS / Liste des produits' %}
 
 {% block content %}
     <div class=\"product-list--container\">

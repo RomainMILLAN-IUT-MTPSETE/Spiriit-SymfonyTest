@@ -25,6 +25,7 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
+            'title' => [$this, 'block_title'],
             'content' => [$this, 'block_content'],
         ];
     }
@@ -55,6 +56,25 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
     }
 
     // line 4
+    public function block_title($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        echo "STS / Panier";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 6
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -64,11 +84,11 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 5
+        // line 7
         echo "    <div class=\"cart--container\">
         <h3 class=\"mt-5 ms-3\">Votre panier (";
-        // line 6
-        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 6, $this->source); })())), "html", null, true);
+        // line 8
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 8, $this->source); })())), "html", null, true);
         echo "):</h3>
 
         <table class=\"table w-75 m-auto\">
@@ -83,31 +103,31 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
             </thead>
             <tbody>
                 ";
-        // line 19
+        // line 21
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 19, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 21, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 20
+            // line 22
             echo "                    <tr>
                         <th class=\"text-center\"><a class=\"coul-red text-decoration-none fw-bolder\" href=\"";
-            // line 21
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_remove", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], 0, [], "array", false, false, false, 21)]), "html", null, true);
+            // line 23
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_remove", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], 0, [], "array", false, false, false, 23)]), "html", null, true);
             echo "\">X</a></th>
                         <th scope=\"row\" class=\"fw-normal\">";
-            // line 22
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 1, [], "array", false, false, false, 22), "html", null, true);
-            echo "</th>
-                        <th class=\"fw-normal\">";
-            // line 23
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 2, [], "array", false, false, false, 23), "html", null, true);
-            echo "</th>
-                        <th class=\"fw-normal\">";
             // line 24
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 3, [], "array", false, false, false, 24), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 1, [], "array", false, false, false, 24), "html", null, true);
             echo "</th>
                         <th class=\"fw-normal\">";
             // line 25
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 4, [], "array", false, false, false, 25), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 2, [], "array", false, false, false, 25), "html", null, true);
+            echo "</th>
+                        <th class=\"fw-normal\">";
+            // line 26
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 3, [], "array", false, false, false, 26), "html", null, true);
+            echo "</th>
+                        <th class=\"fw-normal\">";
+            // line 27
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], 4, [], "array", false, false, false, 27), "html", null, true);
             echo "</th>
                     </tr>
                 ";
@@ -115,17 +135,17 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 28
+        // line 30
         echo "            </tbody>
         </table>
 
         <div class=\"d-flex flex-row justify-content-between w-75 m-auto mt-5\">
             <p><span class=\"fw-semibold\">Total:</span> ";
-        // line 32
-        echo twig_escape_filter($this->env, (isset($context["priceTotal"]) || array_key_exists("priceTotal", $context) ? $context["priceTotal"] : (function () { throw new RuntimeError('Variable "priceTotal" does not exist.', 32, $this->source); })()), "html", null, true);
+        // line 34
+        echo twig_escape_filter($this->env, (isset($context["priceTotal"]) || array_key_exists("priceTotal", $context) ? $context["priceTotal"] : (function () { throw new RuntimeError('Variable "priceTotal" does not exist.', 34, $this->source); })()), "html", null, true);
         echo "</p>
             <a href=\"";
-        // line 33
+        // line 35
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart_clear");
         echo "\"><button class=\"btn btn-dark\" id=\"clearCart\">Vider le panier</button></a>
         </div>
@@ -151,13 +171,15 @@ class __TwigTemplate_2290be3e36eee32ca1f10f44f95a4451 extends Template
 
     public function getDebugInfo()
     {
-        return array (  129 => 33,  125 => 32,  119 => 28,  110 => 25,  106 => 24,  102 => 23,  98 => 22,  94 => 21,  91 => 20,  87 => 19,  71 => 6,  68 => 5,  58 => 4,  35 => 2,);
+        return array (  149 => 35,  145 => 34,  139 => 30,  130 => 27,  126 => 26,  122 => 25,  118 => 24,  114 => 23,  111 => 22,  107 => 21,  91 => 8,  88 => 7,  78 => 6,  59 => 4,  36 => 2,);
     }
 
     public function getSourceContext()
     {
         return new Source("{# templates/cart/cart.html.twig #}
 {% extends 'base.html.twig' %}
+
+{% block title 'STS / Panier' %}
 
 {% block content %}
     <div class=\"cart--container\">
